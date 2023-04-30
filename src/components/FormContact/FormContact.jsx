@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import css from './FormContact.module.css';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 
 import { nanoid } from 'nanoid';
@@ -9,7 +9,7 @@ import { getContacts } from 'redux/selectors';
 export const FormContact = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-const contacts = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -18,7 +18,6 @@ const contacts = useSelector(getContacts);
     else if (name === 'number') setNumber(value);
   };
 
-  
   const formSubmitHandler = (name, number) => {
     const newContact = {
       number,
@@ -33,18 +32,18 @@ const contacts = useSelector(getContacts);
     if (newName) {
       return alert(`${newContact.name} is already in contacts.`);
     } else {
-     dispatch(addContact(newContact))
+      dispatch(addContact(newContact));
     }
   };
   const handleSubmit = e => {
     e.preventDefault();
-    formSubmitHandler (name, number);
+    formSubmitHandler(name, number);
     setName('');
     setNumber('');
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit} name='addContact'>
+    <form className={css.form} onSubmit={handleSubmit} name="addContact">
       <label className={css.label}>
         Name
         <input
